@@ -1,8 +1,8 @@
 <h3>Hello Hudl</h3>
 <% if user_signed_in? %>
   <%= form_tag(root_path, :method => "get", id: "search-form") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search for videos on YouTube", class: "radius", name: 'search' %>
-    <%= submit_tag "Search", class: "button tiny radius", :title => nil %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search for videos on YouTube", class: "radius search-input", name: 'search' %>
+    <%= submit_tag "Search", class: "button tiny radius search-button", :title => nil %>
   <% end %>
 <% end %>
 
@@ -14,26 +14,14 @@
   </div>
 </div>
 
-<a href="#" class="button round" data-dropdown="drop1">Driver</a>
-<ul id="drop1" class="f-dropdown" data-dropdown-content>
-   <width="560" height="315" src="//www.youtube.com/embed/F1msTzfVxoU" frameborder="0" allowfullscreen>
-  <li><a href="https://www.youtube.com/watch?v=z4Zo0NZFrMk">Fix your slice</a></li>
-  <li><a href="https://www.youtube.com/watch?v=zLApkfTZZug">Get extra distance</a></li>
-  <li><a href="https://www.youtube.com/watch?v=vA2cGlobM4o">Play a draw</a></li>
-</ul>
-
-<a href="#" class="button round" data-dropdown="drop2">Putter</a>
-<ul id="drop2" class="f-dropdown" data-dropdown-content>
-  <li><a href="https://www.youtube.com/watch?v=7e8UgT6LrW4">Aimpoint</a></li>
-  <li><a href="https://www.youtube.com/watch?v=n0oJhhez8yg">Grip and Technique</a></li>
-  <li><a href="https://www.youtube.com/watch?v=BO0rPvUQdRQ">Distance Control</a></li>
-</ul>
-
-<a href="#" class="button round" data-dropdown="drop2">Irons</a>
-<ul id="drop2" class="f-dropdown" data-dropdown-content>
-  <li><a href="https://www.youtube.com/watch?v=N-2szHkc4zE">Swing Plane</a></li>
-  <li><a href="https://www.youtube.com/watch?v=n0oJhhez8yg">Grip and Technique</a></li>
-  <li><a href="https://www.youtube.com/watch?v=BO0rPvUQdRQ">Distance Control</a></li>
-</ul>
+<% @data.each do |swing| %>
+  <a href="#" class="button round" data-dropdown="<%= swing.keys[0] %>"><%= swing.keys[0] %></a>
+  <ul id="<%= swing.keys[0] %>" class="f-dropdown chat" data-dropdown-content>
+     <width="560" height="315" src="//www.youtube.com/embed/F1msTzfVxoU" frameborder="0" allowfullscreen>
+     <% swing.values[0].each do |point| %>
+      <li><%= point %></li>
+      <% end %>
+  </ul>
+<% end %>
 
 <% end %>
