@@ -1,0 +1,68 @@
+.searchbar{
+  background-color: #f2f2f2;
+  padding: 1.5em;
+  width: 72%;
+  margin: 0 auto;
+  color: white;
+  border-radius: 10px;
+}
+
+.intro{
+  background-color: rgba(0, 8, 0, 0.5);
+  padding: 2em;
+  width: 50%;
+  margin: 0 auto;
+  color: white;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.intro h3{
+  color: white;
+  text-align: center;
+  font-family: 'Signika', sans-serif;
+}
+
+.font-color{
+  color: #ffffff;
+}
+
+.sign_in{
+  padding-left:20%;
+  padding-right:20%;
+}
+
+.topic{
+text-align: center;
+}
+
+.welcome-bg{
+  background-image: url("http://thechive.files.wordpress.com/2014/07/body_background.jpg?w=550&h=419");
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+}
+
+.sign_in-bg{
+  background-image: url("https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRkqCwqFMOcCcnZSxQgDDT6Qhh4EZ-R3UAc6ohd2IRdn9nq1U9C5A");
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+}
+
+.sign_in-panel{
+  background-color: rgba(0,8,0,0.2);
+  padding: 1.5em;
+  width: 72%;
+  margin: 0 auto;
+  color: white;
+  border-radius: 10px;
+}
