@@ -6,6 +6,8 @@
   <% end %>
 <% end %>
 
+<% if user_signed_in? %>
+
 <div class="row">
   <div class="shape panel large-12 columns">
     <embed width="955" height="500" src="<%= @video_url %>">
@@ -33,3 +35,5 @@
   <li><a href="https://www.youtube.com/watch?v=n0oJhhez8yg">Grip and Technique</a></li>
   <li><a href="https://www.youtube.com/watch?v=BO0rPvUQdRQ">Distance Control</a></li>
 </ul>
+
+<% end %>
