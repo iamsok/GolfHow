@@ -1,4 +1,4 @@
-<div class="sign_in-bg">
+<div class="sign_up-bg">
   <div class="sign_in sign_in-panel">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>
@@ -12,7 +12,7 @@
       <div><%= f.label :password_confirmation %><br />
         <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
 
-      <div><%= f.submit "Sign up" %></div>
+      <%= submit_tag "Submit", class: "button tiny radius search-button", :title => nil %>
     <% end %>
   </div>
 </div>
