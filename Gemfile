@@ -26,6 +26,7 @@ gem 'spring'
 gem 'google_places'
 gem 'foundation-rails', '5.4.3.1'
 gem 'youtube_it', '~> 2.4.0'
+gem 'rails_12factor'
 
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
