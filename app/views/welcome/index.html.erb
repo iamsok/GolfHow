@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-
+<!-- topics to search for swing tips -->
 <div class="row">
   <div class="large-12 topic columns">
     <% @data.each do |swing| %>
@@ -13,7 +13,7 @@
   </div>
 </div>
 
-
+<!-- video search bar and embedded yt player -->
 <div class="searchbar">
   <%= form_tag(root_path, :method => "get", id: "search-form") do %>
     <%= text_field_tag :search, params[:search], placeholder: "Search for videos on YouTube", class: "radius search-input", name: 'search' %>
