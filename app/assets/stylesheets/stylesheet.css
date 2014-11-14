@@ -47,8 +47,8 @@ text-align: center;
   background-attachment: fixed;
 }
 
-.sign_in-bg{
-  background-image: url("https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRkqCwqFMOcCcnZSxQgDDT6Qhh4EZ-R3UAc6ohd2IRdn9nq1U9C5A");
+.sign_up-bg{
+  background-image: url("http://sierrameadows.com/wp-content/themes/sierrameadows/images/bg-wrapper.jpg");
   position: relative;
   width: 100%;
   height: 100%;
@@ -59,10 +59,42 @@ text-align: center;
 }
 
 .sign_in-panel{
-  background-color: rgba(0,8,0,0.2);
+  background-color: rgba(0,8,0,0.5);
   padding: 1.5em;
   width: 72%;
   margin: 0 auto;
   color: white;
   border-radius: 10px;
 }
+
+.sign_in-bg{
+  background-image: url(" http://www.myrtlebeachgolf.com/media/images/Golf_Practice.png");
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+}
+
+.findgolf{
+  background-color: rgba(0, 8, 0, 0.1);
+  padding: 1.5em;
+  width: 72%;
+  margin: 2% auto;
+  color: white;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.map-panel{
+  background-color: #f2f2f2;
+  padding: 1.5em;
+  width: 72%;
+  margin: 0 auto;
+  color: white;
+  border-radius: 10px;
+  text-align: center;
+}
+
