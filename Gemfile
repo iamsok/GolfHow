@@ -24,7 +24,6 @@ gem 'geocoder'
 gem 'jbuilder', '~> 2.0'
 gem 'spring'
 gem 'google_places'
-gem 'yelp', require: 'yelp'
 gem 'foundation-rails', '5.4.3.1'
 gem 'youtube_it', '~> 2.4.0'
 
