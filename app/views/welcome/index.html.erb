@@ -24,81 +24,83 @@
 
 <% end %>
 
+<% if user_signed_in? %>
+  <div class="findgolf">
+    <h3>Feel like practicing? Here are some places nearby for you to check out!</h3>
+  </div>
+
+  <% content_for :extra_javascript do %>
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
+    </script>
+
+
+    <div class="row map-panel">
+      <button onclick="getLocation()">Click Button To See Your Location</button>
+      <div id="mapholder" class="small-6 small-offset-1 columns"></div>
+      <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
+    <script>
+      var x = document.getElementById("demo");
+      function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition, showError);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+      }
+
+      function showPosition(position) {
+        lat = position.coords.latitude;
+        lon = position.coords.longitude;
+        latlon = new google.maps.LatLng(lat, lon)
+        mapholder = document.getElementById('mapholder')
+        mapholder.style.height = '400px';
+        mapholder.style.width = '700px';
+
+        var myOptions = {
+        center:latlon,zoom:13,
+        mapTypeId:google.maps.MapTypeId.ROADMAP,
+        mapTypeControl:false,
+        navigationControlOptions:{style:google.maps.NavigationControlStyle.SMALL}
+        }
+
+        var map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
+        var marker = new google.maps.Marker({position:latlon,map:map,title:"You are here!"});
+      }
+
+      function showError(error) {
+        switch(error.code) {
+          case error.PERMISSION_DENIED:
+              x.innerHTML = "User denied the request for Geolocation."
+              break;
+          case error.POSITION_UNAVAILABLE:
+              x.innerHTML = "Location information is unavailable."
+              break;
+          case error.TIMEOUT:
+              x.innerHTML = "The request to get user location timed out."
+              break;
+          case error.UNKNOWN_ERROR:
+              x.innerHTML = "An unknown error occurred."
+              break;
+        }
+      }
+    </script>
+  </div>
+  <% end %>
+<% end %>
+
+
 <% if !user_signed_in? %>
-<!-- intro prior to signing up or signing in -->
-<div class="welcome-bg">
-    <div class="intro">
-      <h3><strong>GolfHow</strong> Find golf training videos all in one place!</h3>
-      <%= link_to "Get Started Today!", new_user_registration_path, class: "button round" %><br>
-      <div class="font-color">
-        <%= link_to "Sign in", new_user_session_path %>
+  <!-- intro prior to signing up or signing in -->
+  <div class="welcome-bg">
+      <div class="intro">
+        <h3><strong>GolfHow</strong> Find golf training videos all in one place!</h3>
+        <%= link_to "Get Started Today!", new_user_registration_path, class: "button round" %><br>
+        <div class="font-color">
+          <%= link_to "Sign in", new_user_session_path %>
+        </div>
       </div>
     </div>
   </div>
-</div>
 <% end %>
 
-<div class="findgolf">
-  <h3>Feel like practicing? Here are some places nearby for you to check out!</h3>
-</div>
-
-
-<% content_for :extra_javascript do %>
-  <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
-  </script>
-
-
-<div class="row map-panel">
-  <button onclick="getLocation()">Click Button To See Your Location</button>
-  <div id="mapholder" class="small-6 small-offset-1 columns"></div>
-  <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
-
-  <script>
-    var x = document.getElementById("demo");
-    function getLocation() {
-      if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(showPosition, showError);
-      } else {
-          x.innerHTML = "Geolocation is not supported by this browser.";
-      }
-    }
-
-    function showPosition(position) {
-      lat = position.coords.latitude;
-      lon = position.coords.longitude;
-      latlon = new google.maps.LatLng(lat, lon)
-      mapholder = document.getElementById('mapholder')
-      mapholder.style.height = '400px';
-      mapholder.style.width = '700px';
-
-      var myOptions = {
-      center:latlon,zoom:13,
-      mapTypeId:google.maps.MapTypeId.ROADMAP,
-      mapTypeControl:false,
-      navigationControlOptions:{style:google.maps.NavigationControlStyle.SMALL}
-      }
-
-      var map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
-      var marker = new google.maps.Marker({position:latlon,map:map,title:"You are here!"});
-    }
-
-    function showError(error) {
-      switch(error.code) {
-        case error.PERMISSION_DENIED:
-            x.innerHTML = "User denied the request for Geolocation."
-            break;
-        case error.POSITION_UNAVAILABLE:
-            x.innerHTML = "Location information is unavailable."
-            break;
-        case error.TIMEOUT:
-            x.innerHTML = "The request to get user location timed out."
-            break;
-        case error.UNKNOWN_ERROR:
-            x.innerHTML = "An unknown error occurred."
-            break;
-      }
-    }
-  </script>
-</div>
-
-<% end %>
