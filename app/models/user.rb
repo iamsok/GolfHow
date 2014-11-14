@@ -5,6 +5,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   geocoded_by :address
-
   after_validation :geocode, if: :address_changed?
 end

@@ -1,26 +1,26 @@
 <% if user_signed_in? %>
 <!-- topics to search for swing tips -->
-<div class="row">
-  <div class="large-12 topic columns">
-    <% @data.each do |swing| %>
-      <a href="#" class="button" data-dropdown="<%= swing.keys[0] %>"><%= swing.keys[0] %></a>
-      <ul id="<%= swing.keys[0] %>" class="f-dropdown list" data-dropdown-content>
-        <% swing.values[0].each do |point| %>
-          <li><%= point %></li>
-          <% end %>
-      </ul>
-    <% end %>
+  <div class="row">
+    <div class="large-12 topic columns">
+      <% @data.each do |swing| %>
+        <a href="#" class="button" data-dropdown="<%= swing.keys[0] %>"><%= swing.keys[0] %></a>
+        <ul id="<%= swing.keys[0] %>" class="f-dropdown list" data-dropdown-content>
+          <% swing.values[0].each do |point| %>
+            <li><%= point %></li>
+            <% end %>
+        </ul>
+      <% end %>
+    </div>
   </div>
-</div>
 
-<!-- video search bar and embedded yt player -->
-<div class="searchbar">
-  <%= form_tag(root_path, :method => "get", id: "search-form") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search for videos on YouTube", class: "radius search-input", name: 'search' %>
-    <%= submit_tag "Search", class: "button tiny radius search-button", :title => nil %>
-  <% end %>
-  <embed width="100%" height="500" src="<%= @video_url %>">
-</div>
+  <!-- video search bar and embedded yt player -->
+  <div class="searchbar">
+    <%= form_tag(root_path, :method => "get", id: "search-form") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search for videos on YouTube", class: "radius search-input", name: 'search' %>
+      <%= submit_tag "Search", class: "button tiny radius search-button", :title => nil %>
+    <% end %>
+    <embed width="100%" height="500" src="<%= @video_url %>">
+  </div>
 
 <% end %>
 
@@ -39,59 +39,57 @@
       <div id="mapholder" class="small-6 small-offset-1 columns"></div>
       <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
 
-    <script>
-      var x = document.getElementById("demo");
-      function getLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition, showError);
-        } else {
-            x.innerHTML = "Geolocation is not supported by this browser.";
-        }
-      }
-
-      function showPosition(position) {
-        lat = position.coords.latitude;
-        lon = position.coords.longitude;
-        latlon = new google.maps.LatLng(lat, lon)
-        mapholder = document.getElementById('mapholder')
-        mapholder.style.height = '400px';
-        mapholder.style.width = '700px';
-
-        var myOptions = {
-        center:latlon,zoom:13,
-        mapTypeId:google.maps.MapTypeId.ROADMAP,
-        mapTypeControl:false,
-        navigationControlOptions:{style:google.maps.NavigationControlStyle.SMALL}
+      <script>
+        var x = document.getElementById("demo");
+        function getLocation() {
+          if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(showPosition, showError);
+          } else {
+              x.innerHTML = "Geolocation is not supported by this browser.";
+          }
         }
 
-        var map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
-        var marker = new google.maps.Marker({position:latlon,map:map,title:"You are here!"});
-      }
+        function showPosition(position) {
+          lat = position.coords.latitude;
+          lon = position.coords.longitude;
+          latlon = new google.maps.LatLng(lat, lon)
+          mapholder = document.getElementById('mapholder')
+          mapholder.style.height = '400px';
+          mapholder.style.width = '700px';
 
-      function showError(error) {
-        switch(error.code) {
-          case error.PERMISSION_DENIED:
-              x.innerHTML = "User denied the request for Geolocation."
-              break;
-          case error.POSITION_UNAVAILABLE:
-              x.innerHTML = "Location information is unavailable."
-              break;
-          case error.TIMEOUT:
-              x.innerHTML = "The request to get user location timed out."
-              break;
-          case error.UNKNOWN_ERROR:
-              x.innerHTML = "An unknown error occurred."
-              break;
+          var myOptions = {
+          center:latlon,zoom:13,
+          mapTypeId:google.maps.MapTypeId.ROADMAP,
+          mapTypeControl:false,
+          navigationControlOptions:{style:google.maps.NavigationControlStyle.SMALL}
+          }
+
+          var map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
+          var marker = new google.maps.Marker({position:latlon,map:map,title:"You are here!"});
         }
-      }
-    </script>
-  </div>
+
+        function showError(error) {
+          switch(error.code) {
+            case error.PERMISSION_DENIED:
+                x.innerHTML = "User denied the request for Geolocation."
+                break;
+            case error.POSITION_UNAVAILABLE:
+                x.innerHTML = "Location information is unavailable."
+                break;
+            case error.TIMEOUT:
+                x.innerHTML = "The request to get user location timed out."
+                break;
+            case error.UNKNOWN_ERROR:
+                x.innerHTML = "An unknown error occurred."
+                break;
+          }
+        }
+      </script>
+    </div>
   <% end %>
 <% end %>
-
-
+<!-- intro prior to signing up or signing in -->
 <% if !user_signed_in? %>
-  <!-- intro prior to signing up or signing in -->
   <div class="welcome-bg">
       <div class="intro">
         <h3><strong>GolfHow</strong> Find golf training videos all in one place!</h3>
