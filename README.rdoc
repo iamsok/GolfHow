@@ -3,3 +3,6 @@
 GolfHow - Finding your necessary golf learning videos all in one place. 
 Beginner golfer's can now search for specific training videos with just one click.
 User's can also search for nearby golf facilities according to their current location (WIP)
+
+golfhow.herokuapp.com
+
